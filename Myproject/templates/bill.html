@@ -1,0 +1,229 @@
+<title>Bill</title>
+{% extends 'bas.html' %} 
+{% block home %}
+{% load static %}
+<link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+<script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .clas {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .bill {
+            background-color: #E3DFFD;
+            padding: 20px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .bill h1 {
+            color: crimson;
+            font-size: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .bill h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .bill input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .bill button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            font-size: medium;
+            border: none;
+            border-radius: 5px;
+            color: aliceblue;
+            background-color: blue;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .bill button i {
+            margin-right: 10px;
+            color: coral;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            overflow-x: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .container table thead {
+            background-color: bisque;
+            color: blue;
+            font-weight: 800;
+        }
+
+        .container table th, .container table td {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .container table tbody tr {
+            font-weight: bolder;
+        }
+
+        .container h2 {
+            text-align: center;
+            color: rgb(0, 116, 0);
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        .container button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            font-size: larger;
+            border: none;
+            border-radius: 5px;
+            color: aliceblue;
+            background-color: blue;
+            cursor: pointer;
+        }
+
+        .container button i {
+            margin-right: 10px;
+            color: coral;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .bill h1 {
+                font-size: 24px;
+            }
+
+            .container h2 {
+                font-size: 20px;
+            }
+
+            .bill button, .container button {
+                font-size: medium;
+                padding: 8px 15px;
+            }
+
+            .container table th, .container table td {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bill h1, .container h2 {
+                font-size: 18px;
+            }
+
+            .bill button, .container button {
+                font-size: small;
+                padding: 5px 10px;
+            }
+
+            .container table th, .container table td {
+                font-size: 12px;
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+<div class="clas">
+    <div class="bill">
+        <center>
+            <u>
+                <h1>Bill Page</h1>
+            </u>
+            <form method='post' action="get">
+                {% csrf_token %}
+                <h2>Enter product name:</h2>
+                <input type="text" name="name" id="inpt">
+                <h2>Enter Quantity:</h2>
+                <input type="text" name="quan" value="1">
+                <h2>Price:</h2>
+                <h2 style="color: brown;">{{price}}</h2>
+                <button name="add">
+                    <i class="fa-solid fa-cart-plus"></i>Add
+                </button>
+                <button name="remove">
+                    <i class="fa-solid fa-eraser"></i>Cancel Bill
+                </button>
+                <script>
+                    window.onload = function() { inpt.focus(); }
+                </script>
+            </form>
+        </center>
+    </div>
+    <div class="container">
+        <center>
+            <u>
+                <h1>Total Bill</h1>
+            </u>
+        </center>
+        <table>
+            <thead>
+                <tr>
+                    <th>S.NO</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for k in queryset %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{k.Name}}</td>
+                    <td>{{k.quan}}</td>
+                    <td>{{k.price}}</td>
+                    <td>{{k.cash}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <center>
+            <h2>Total Price: {{Total}}</h2>
+            <button name="bill">
+                <i class="fa-solid fa-money-bills"></i>Bill
+            </button>
+        </center>
+    </div>
+</div>
+{% endblock %}

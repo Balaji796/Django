@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+        }
+
+        .register {
+            background-color: #c5effe;
+            padding: 20px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            margin: 30px auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: tomato;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            color: antiquewhite;
+            background-color: brown;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkbrown;
+        }
+
+        /* Make input, select, and button responsive */
+        input[type="text"], select {
+            font-size: 1rem;
+        }
+
+        /* Media Query for smaller screens */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 0.9rem;
+            }
+
+            input[type="text"], select {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+
+            button {
+                font-size: 1rem;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .register {
+                width: 90%;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.3rem;
+            }
+
+            h2 {
+                font-size: 0.8rem;
+            }
+
+            input[type="text"], select {
+                font-size: 0.8rem;
+                padding: 7px;
+            }
+
+            button {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block home %}
+    <div class="register">
+        <u style="color:chocolate">
+            <center>
+                <h1>Register Product</h1>
+            </center>
+        </u>
+        <form method="post" action="add">
+            {% csrf_token %}
+            <h2>Name :</h2>
+            <input type="text" name="name" id="inpt" placeholder="Enter product name"><br>
+
+            <h2>Piece/Kg :</h2>
+            <select name="kg">
+                <option disabled="true" selected>Piece/Kg</option>
+                <option>Piece</option>
+                <option>Kg</option>
+            </select>
+
+            <h2>Type :</h2>
+            <select name="type">
+                <option disabled="true" selected>Type</option>
+                <option>Steel</option>
+                <option>Aluminium</option>
+                <option>Iron</option>
+                <option>Wood</option>
+                <option>Nonstick</option>
+                <option>Brass</option>
+                <option>Copper</option>
+                <option>Plastic</option>
+            </select>
+
+            <h2>Quantity :</h2>
+            <input type="text" name="quan" placeholder="Enter quantity"><br>
+
+            <h2>Price :</h2>
+            <input type="text" name="price" placeholder="Enter price"><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    {% endblock %}
+</body>
+</html>

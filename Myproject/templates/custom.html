@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            box-sizing: border-box;
+        }
+
+        .date {
+            background-color: #c5effe;
+            padding: 20px;
+            border-radius: 20px;
+            max-width: 500px;
+            margin: 40px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .date h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .date h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .date input {
+            width: 90%;
+            max-width: 400px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .date button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: antiquewhite;
+            background-color: brown;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .date button:hover {
+            background-color: darkred;
+        }
+
+        @media (max-width: 768px) {
+            .date {
+                padding: 15px;
+            }
+
+            .date h1 {
+                font-size: 24px;
+            }
+
+            .date h2 {
+                font-size: 16px;
+            }
+
+            .date input {
+                font-size: 14px;
+            }
+
+            .date button {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .date h1 {
+                font-size: 20px;
+            }
+
+            .date h2 {
+                font-size: 14px;
+            }
+
+            .date input {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .date button {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %} 
+    {% block home %} 
+    <div class="date">
+        <center>
+            <u>
+                <h1>Search By Date</h1>
+            </u>
+            <form method='post' action="do">
+                {% csrf_token %}
+                <h2>Enter the Date:</h2>
+                <input type="text" name="dat" id="inpt">
+                <br>
+                <button>Search</button>
+            </form>
+            <script>
+                window.onload = function() { inpt.focus(); }
+            </script>
+        </center>
+    </div>
+    {% endblock %} 
+</body>
+</html>

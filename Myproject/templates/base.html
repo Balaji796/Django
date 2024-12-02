@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    <style>
+        body {
+            background-image: url("{% static '/images/b1.jpeg' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            font-size: 18px;
+            background-color: #B2A4FF;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        li {
+            float: none;
+        }
+
+        li a {
+            display: block;
+            color: black;
+            padding: 18px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        li a:hover {
+            font-size: 20px;
+            color: lavenderblush;
+            background-color: lightblue;
+        }
+
+        .ab {
+            margin: 0;
+            font-size: 24px;
+            padding: 10px;
+            text-align: right;
+            background-color: #FFB4B4;
+            flex: 1 1 auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ab i {
+            font-size: 36px;
+            color: greenyellow;
+        }
+
+        .ab span {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: indigo;
+        }
+
+        .ab a {
+            font-size: 14px;
+            font-style: italic;
+            color: black;
+        }
+
+        /* Media queries for responsiveness */
+        @media only screen and (max-width: 1024px) {
+            ul {
+                flex-wrap: wrap;
+            }
+
+            li a {
+                font-size: 16px;
+                padding: 10px 15px;
+            }
+
+            .ab {
+                font-size: 20px;
+            }
+
+            .ab i {
+                font-size: 28px;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            li a {
+                font-size: 16px;
+                padding: 8px 12px;
+                text-align: left;
+            }
+
+            .ab {
+                justify-content: center;
+                text-align: center;
+                font-size: 18px;
+            }
+
+            .ab i {
+                font-size: 24px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            ul {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            li a {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .ab {
+                flex-direction: column;
+                font-size: 16px;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .ab i {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="/home1">Home</a></li>
+        <li><a href="/welcome">Welcome</a></li>
+        <li><a href="/register">AddProduct</a></li>
+        <li><a href="/registred">Registred</a></li>
+        <li><a href="/search">Search</a></li>
+        <li><a href="/drop">Drop</a></li>
+        <li><a href="/customer">CustomerDetails</a></li>
+        <li><a href="/update">Update</a></li>
+        <div class="ab">
+            <i class="fa-solid fa-dove fa-beat-fade"></i>
+            <span>AB</span>
+            <a>Make Things Possible</a>
+        </div>
+    </ul>
+
+    {% block home %} 
+    {% endblock %}
+</body>
+</html>

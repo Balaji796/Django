@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login</title>
+    {% load static %}
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    <style>
+        body {
+            background-image: url("{% static '/images/e1.jpg' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .back {
+            background-color: ivory;
+            width: 90%;
+            max-width: 500px;
+            margin: 50px auto;
+            border-radius: 30px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: orangered;
+            font-weight: bolder;
+            font-size: 2.5rem;
+        }
+
+        h1.form-label {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            color: aliceblue;
+            background-color: blue;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        a {
+            color: bisque;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        a:hover {
+            color: coral;
+        }
+
+        .icon {
+            font-size: 5rem;
+            color: darkblue;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            button {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            input[type="password"] {
+                font-size: 0.9rem;
+            }
+
+            button {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: rgba(255, 248, 220, 0.721);">
+    <a href="/">Back</a>
+    <div class="back">
+        <center>
+            <i class="fa-solid fa-users icon"></i>
+            <h1>Employee Login</h1>
+            <form method="post" action="ab">
+                {% csrf_token %}
+                <h1 class="form-label">Type Password:</h1>
+                <input type="password" name="pas" id="inpt">
+                <button>Submit</button>
+                <br><br>
+                {{ack}}<br>
+                {{ak}}
+            </form>
+        </center>
+    </div>
+    <script>
+        window.onload = function () {
+            document.getElementById("inpt").focus();
+        };
+    </script>
+</body>
+</html>

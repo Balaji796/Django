@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management System</title>
+    {% load static %}
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    <style>
+        body {
+            background-image: linear-gradient(rgba(0, 63, 136, 0.2), rgba(60, 230, 242, 0.2)), url("{% static '/images/home.png' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .slide {
+            animation: slideleft 1.5s linear forwards;
+            padding: 30px;
+            height: auto;
+            max-width: 600px;
+            width: 90%;
+            border-radius: 10px;
+            background-color: rgba(245, 245, 220, 0.8);
+            text-align: center;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .it {
+            border-left: 6px solid rgb(128, 0, 75);
+            padding: 20px;
+        }
+
+        h1 {
+            color: orangered;
+            font-weight: bolder;
+            font-size: 3rem;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin: 0;
+        }
+
+        button {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: black;
+            padding: 10px 20px;
+            margin: 20px 0;
+            width: 80%;
+            background-color: rgba(0, 255, 255, 0.863);
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: rgba(0, 200, 200, 0.9);
+        }
+
+        button i {
+            margin-right: 10px;
+            color: blue;
+        }
+
+        @keyframes slideleft {
+            0% {
+                transform: translateX(300px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0px);
+                opacity: 1;
+            }
+        }
+
+        /* Media Queries for Responsiveness */
+        @media only screen and (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            button {
+                font-size: 1.2rem;
+                padding: 10px 15px;
+                width: 90%;
+            }
+
+            .slide {
+                max-width: 90%;
+                padding: 20px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            button {
+                font-size: 1rem;
+                padding: 10px;
+                margin: 10px auto;
+            }
+
+            .slide {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="it">
+            <center>
+                <u style="color:coral">
+                    <b>
+                        <h1>Management System</h1>
+                    </b>
+                </u>
+            </center>
+            <form method="post" action="mlog">
+                {% csrf_token %}
+                <button name="employee"><i class="fa-solid fa-users"></i>Employee</button>
+                <button name="manager"><i class="fa-solid fa-user-tie"></i>Manager</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Bill</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            box-sizing: border-box;
+        }
+
+        h1, h2 {
+            margin: 10px 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: crimson;
+        }
+
+        h1.oblique {
+            font-style: oblique;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: rgb(0, 116, 0);
+        }
+
+        table {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        table thead tr {
+            background-color: bisque;
+            color: blue;
+            font-weight: bold;
+        }
+
+        table td, table th {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        tbody tr {
+            background-color: #fff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f3f3f3;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .thank-you {
+            font-size: 1.5rem;
+            color: crimson;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+                width: 100%;
+            }
+
+            table td, table th {
+                padding: 8px;
+            }
+
+            .thank-you {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1 class="oblique">AB HOMENEEDS</h1>
+        <u><h1>Total Bill</h1></u>
+        <h2>Date: {{date}}</h2>
+    </center>
+    <table>
+        <thead>
+            <tr>
+                <th>S.NO</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for k in queryset %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{k.Name}}</td>
+                <td>{{k.quan}}</td>
+                <td>{{k.price}}</td>
+                <td>{{k.cash}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <center>
+        <h2>Total Price: {{Total}}</h2>
+        <h1 class="thank-you">Thank you, visit again...</h1>
+    </center>
+</body>
+</html>

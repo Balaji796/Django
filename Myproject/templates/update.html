@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Update</title>
+    {% extends 'base.html' %} 
+    {% block home %} 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .update {
+            background-color: #c5effe;
+            padding: 15px; /* Reduced padding */
+            border-radius: 15px; /* Reduced border-radius */
+            width: 440px;
+            margin: 20px auto; /* Reduced margin */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            color: #d45d5d;
+            font-size: 1.5rem; /* Reduced font size for h1 */
+            margin-bottom: 10px; /* Reduced margin */
+        }
+
+        h2 {
+            font-size: 1rem; /* Reduced font size for h2 */
+            margin-bottom: 5px; /* Reduced margin */
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px; /* Reduced padding */
+            margin: 5px 0; /* Reduced margin */
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 0.9rem; /* Slightly reduced font size */
+        }
+
+        button {
+            width: 40%;
+            padding: 8px; /* Reduced padding */
+            margin-top: 8px; /* Reduced margin */
+            font-size: 0.9rem; /* Reduced font size */
+            color: white;
+            background-color: brown;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkbrown;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .update {
+                width: 90%;
+                margin-top: 20px;
+            }
+
+            button {
+                font-size: 0.85rem;
+                padding: 7px;
+            }
+
+            input[type="text"] {
+                font-size: 0.85rem;
+                padding: 7px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .update {
+                width: 95%;
+                margin-top: 15px;
+            }
+
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 0.9rem;
+            }
+
+            button {
+                font-size: 0.8rem;
+                padding: 6px;
+            }
+
+            input[type="text"] {
+                font-size: 0.8rem;
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="update">
+        <center>
+            <u><h1>UPDATE PRODUCT</h1></u>
+            <form method="post" action="new">
+                {% csrf_token %}
+                
+                <h2>Name :</h2>
+                <input type="text" name="name"><br>
+
+                <h2>Quantity :</h2>
+                <input type="text" name="quan"><br>
+                
+                <button style="font-size: medium;color:antiquewhite; background-color: brown;" name="ad">Add</button> 
+                <button style="font-size: medium;color:antiquewhite; background-color: brown;" name="qua">Update Quantity</button>
+
+                <h2>Price :</h2>
+                <input type="text" name="price"><br>
+                
+                <button style="font-size: medium;color:antiquewhite; background-color: brown;" name="pri">Update Price</button>
+            </form>
+        </center>
+    </div>
+    {% endblock %}
+</body>
+</html>

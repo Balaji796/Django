@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    <style>
+        body {
+            background-image: url("{% static '/images/g6.webp' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 20px;
+            background-color: rgba(0, 255, 128, 0.6);
+            flex-wrap: wrap;
+        }
+
+        li {
+            display: inline;
+        }
+
+        li a {
+            display: block;
+            color: black;
+            padding: 18px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        li a:hover {
+            font-size: 22px;
+            background-color: lightgreen;
+        }
+
+        .ab {
+            font-size: 24px;
+            background-color: #E8A0BF;
+            padding: 8px 16px;
+            margin: 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .ab i {
+            font-size: 28px;
+            color: greenyellow;
+        }
+
+        .ab a {
+            font-size: 12px;
+            font-style: italic;
+            color: black;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            li a {
+                font-size: 18px;
+                padding: 12px 15px;
+            }
+
+            .ab {
+                flex-direction: column;
+                font-size: 18px;
+                padding: 10px 0;
+                gap: 4px;
+            }
+
+            .ab i {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            ul {
+                flex-direction: column;
+                padding: 0;
+            }
+
+            li a {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            .ab {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .ab i {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: rgba(240, 248, 255, 0.392)">
+    <ul>
+        <li>
+            <a href="/home1">Home</a>
+        </li>
+        <li>
+            <a href="/welcom">Welcome</a>
+        </li>
+        <li>
+            <a href="/bill">Bill</a>
+        </li>
+        <li>
+            <a href="/reg">Registred</a>
+        </li>
+        <li>
+            <a href="/see">Search</a>
+        </li>
+        <div class="ab">
+            <i class="fa-solid fa-dove fa-beat-fade"></i>
+            <span>AB</span>
+            <a>Make Things Possible</a>
+        </div>
+    </ul>
+</body>
+{% block home %} 
+{% endblock %}
+</html>

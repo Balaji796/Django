@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Login</title>
+    {% load static %}
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    <style>
+        body {
+            background-image: url("{% static '/images/m1.webp' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .back {
+            background-color: lavender;
+            width: 100%;
+            max-width: 570px;
+            margin: 50px auto;
+            border-radius: 30px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .back i {
+            height: 180px;
+            width: 220px;
+        }
+
+        h1 {
+            color: orangered;
+            font-weight: bolder;
+            font-size: 2rem;
+            margin-bottom: 50px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            background-color: blue;
+            color: aliceblue;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        .back a {
+            color: bisque;
+            font-size: 1.2rem;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .back {
+                width: 90%;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            input[type="password"] {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+
+            button {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .back {
+                width: 95%;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            input[type="password"] {
+                font-size: 0.8rem;
+                padding: 6px;
+            }
+
+            button {
+                font-size: 0.8rem;
+                padding: 8px;
+            }
+
+            .back i {
+                height: 150px;
+                width: 180px;
+            }
+        }
+    </style>
+</head>
+<body style="background-color:rgba(255, 248, 220, 0.721)">
+    <a href="/" style="color:bisque; font-size: 1.5rem; text-decoration: none; margin-left: 20px;">Back</a>
+    <div class="back">
+        <center>
+            <i class="fa-solid fa-user-tie"></i>
+            <u><h1>Manager Login</h1></u>
+            <form method="post" action="a">
+                {% csrf_token %}
+                <h2>Type Password:</h2>
+                <input type="password" name="pas" id="inpt"><br>
+                <button type="submit">Submit</button><br><br>
+                {{ ack }}<br>
+                {{ ak }}
+            </form>
+            <script>
+                window.onload = function() {
+                    document.getElementById("inpt").focus();
+                };
+            </script>
+        </center>
+    </div>
+</body>
+</html>

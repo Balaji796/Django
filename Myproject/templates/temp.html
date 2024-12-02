@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Bill</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            margin: 10px 0;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: bisque;
+            font-weight: bold;
+            color: blue;
+        }
+
+        table td {
+            font-weight: bold;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .total-price {
+            font-size: 1.5rem;
+            color: green;
+            font-weight: bold;
+        }
+
+        .thank-you {
+            color: crimson;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .total-price {
+                font-size: 1.2rem;
+            }
+
+            .thank-you {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1rem;
+            }
+
+            .total-price {
+                font-size: 1rem;
+            }
+
+            .thank-you {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="center">
+        <h1 style="color:crimson;font-style:oblique;font-size:45px">AB HOMENEEDS</h1>
+
+        <u><h1 style="color:rgb(0, 116, 0);font-size:40px">Total Bill</h1></u>
+        <h2>Date: 03-07-2023</h2>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>S.NO</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>TAVVA</td>
+                <td>2.0</td>
+                <td>260.0</td>
+                <td>520.0</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>PLATE</td>
+                <td>11.0</td>
+                <td>75.0</td>
+                <td>825.0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="center">
+        <h2 class="total-price">Total Price: 1345.0</h2>
+        <h1 class="thank-you">Thank you, visit again.....</h1>
+    </div>
+
+</body>
+</html>

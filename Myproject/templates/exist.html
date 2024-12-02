@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Total Bill</title>
+        {% load static %}
+        <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+        <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f8f9fa;
+            }
+
+            .container {
+                width: 95%;
+                max-width: 1200px;
+                margin: 20px auto;
+                padding: 15px;
+                background-color: #ffffff;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+
+            h1, h2 {
+                color: #0056b3; /* Changed heading color */
+                margin-bottom: 15px; /* Reduced margin */
+            }
+
+            h1 {
+                font-size: 1.8rem; /* Decreased font size */
+                font-weight: bold;
+            }
+
+            h2 {
+                font-size: 1rem; /* Decreased font size */
+                font-weight: normal;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 15px; /* Reduced margin */
+            }
+
+            table thead tr {
+                background-color: bisque;
+                color: blue;
+                font-weight: bold;
+            }
+
+            table th, table td {
+                text-align: left;
+                padding: 8px 10px; /* Reduced padding */
+                border: 1px solid #ddd;
+                font-size: 0.9rem; /* Reduced font size */
+            }
+
+            .form-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px; /* Reduced gap */
+                justify-content: center;
+            }
+
+            .bill, .customer {
+                flex: 1 1 300px;
+                max-width: 380px;
+                padding: 15px; /* Reduced padding */
+                background-color: paleturquoise;
+                border-radius: 15px; /* Adjusted border radius */
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            input[type="text"] {
+                width: 100%;
+                padding: 8px; /* Reduced padding */
+                font-size: 0.9rem; /* Decreased font size */
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-bottom: 15px; /* Reduced margin */
+            }
+
+            button {
+                width: 100%;
+                padding: 10px;
+                font-size: 0.9rem; /* Reduced font size */
+                color: #fff;
+                background-color: blue;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-bottom: 10px; /* Added small margin between buttons */
+            }
+
+            button:hover {
+                background-color: darkblue;
+            }
+
+            button[name="remove"] {
+                background-color: #dc3545;
+            }
+
+            button[name="remove"]:hover {
+                background-color: #c82333;
+            }
+
+            button[name="cancle"] {
+                background-color: #ffc107;
+                color: #333;
+            }
+
+            button[name="cancle"]:hover {
+                background-color: #e0a800;
+            }
+
+            @media (max-width: 768px) {
+                h1 {
+                    font-size: 1.5rem; /* Reduced font size for h1 */
+                }
+
+                h2 {
+                    font-size: 0.9rem; /* Reduced font size for h2 */
+                }
+
+                table th, table td {
+                    font-size: 0.85rem; /* Smaller table text */
+                }
+            }
+
+            @media (max-width: 480px) {
+                h1 {
+                    font-size: 1.3rem; /* Further reduced font size for h1 */
+                }
+
+                h2 {
+                    font-size: 0.85rem; /* Further reduced font size for h2 */
+                }
+
+                button {
+                    font-size: 0.8rem; /* Further reduced font size for buttons */
+                }
+
+                table th, table td {
+                    font-size: 0.8rem; /* Further reduced table text */
+                }
+            }
+        </style>
+    </head>
+    <body>
+        {% extends 'bas.html' %}
+        {% block home %}
+        <div class="container">
+            <center><u><h1>Total Bill</h1></u></center>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.NO</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for k in queryset %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ k.Name }}</td>
+                        <td>{{ k.quan }}</td>
+                        <td>{{ k.price }}</td>
+                        <td>{{ k.cash }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <center><h2>Total Price: {{ Total }}</h2></center>
+        </div>
+        <div class="form-container">
+            <div class="bill">
+                <u><h1>Product to Remove</h1></u>
+                <h2>Enter product name:</h2>
+                <input type="text" name="pro" id="inpt">
+                <button name="remove">Remove</button>
+                <button name="cancle" style="margin-top: 10px;">Cancel Bill</button>
+            </div>
+            <div class="customer">
+                <center>
+                    <u><h1>Customer Details</h1></u>
+                    <h2>Date:</h2>
+                    <input type="text" name="dat" value="{{ date }}">
+                    <h2>Contact:</h2>
+                    <input type="text" name="phone">
+                    <h2>Address:</h2>
+                    <input type="text" name="addr">
+                    <h2>Amount:</h2>
+                    <input type="text" name="total" value="{{ price }}">
+                    <button id="pdfButton" name="download">Download</button>
+                    <button name="new" style="margin-top: 10px;">
+                        <i class="fa-solid fa-user"></i> New Bill
+                    </button>
+                </center>
+            </div>
+        </div>
+        <script>
+            window.onload = function () {
+                document.getElementById("inpt").focus();
+            };
+        </script>
+        {% endblock %}
+    </body>
+</html>

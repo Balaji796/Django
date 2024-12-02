@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .search {
+            background-color: #E3DFFD;
+            padding: 20px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            margin: 50px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 1rem;
+            color: #fff;
+            background-color: brown;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1rem;
+            }
+
+            button {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 0.9rem;
+            }
+
+            input[type="text"] {
+                font-size: 0.9rem;
+            }
+
+            button {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% extends 'bas.html' %}
+    {% block home %}
+    <div class="search">
+        <center>
+            <u><h1>Search Product</h1></u>
+            <form method="post" action="es">
+                {% csrf_token %}
+                <h2>Enter Product Name:</h2>
+                <input type="text" name="name" id="inpt">
+                <button>Search</button>
+            </form>
+        </center>
+    </div>
+    <script>
+        window.onload = function () {
+            document.getElementById("inpt").focus();
+        };
+    </script>
+    {% endblock %}
+</body>
+</html>
